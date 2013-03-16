@@ -59,7 +59,7 @@ Users = {
       _this._url,
       {access_token: access_token},
       function(data, status) {
-        console.log(data);
+
         if (data && _this._response[data.status]) {
           data.access_token = access_token;
           _this._response[data.status](data);
@@ -147,6 +147,9 @@ Users = {
       _se.map.disableDoubleClickZoom = false;
 
       Teams.points();
+      setInterval(function() {
+        Teams.points();
+      }, 5000);
     },
 
     created: function(data) {

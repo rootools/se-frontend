@@ -63,24 +63,54 @@ function hexToRgb(hex) {
 
 var DrawHeatMap = function(data) {
 
+  if (typeof _se.heatmaps !== "undefined") {
+    $.each(_se.heatmaps, function(color, heatmap) {
+      if (typeof data[color] !== "undefined") {
+        var heatmapData = [];
+
+        $.each(data[color], function(i, point) {
+          heatmapData.push({location: new google.maps.LatLng(point.lat, point.lng), weight: point.weight*100});
+        });
+//console.log(heatmap);
+        _se.heatmaps[color].setData(heatmapData);
+      } else {
+        heatmap.setMap(null);
+        delete(_se.heatmaps[color]);
+      }
+    });
+  } else {
+    _se.heatmaps = {};
+  }
+
   $.each(data, function(color, points) {
 
+    if (typeof _se.heatmaps[color] !== "undefined") {
+      return;
+    }
+
     var heatmapData = [];
+    var weights = [];
 
     $.each(points, function(i, point) {
-      heatmapData.push({location: new google.maps.LatLng(point.lat, point.lng), weight: point.weight});
+      heatmapData.push({location: new google.maps.LatLng(point.lat, point.lng), weight: point.weight*100});
+      weights.push(point.weight);
     });
 
     rgb = hexToRgb(color);
 
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatmapData,
-      opacity: 0.8,
+      radius: Math.max.apply(null, weights)*3,
+      opacity: 0.9,
       gradient: [
           'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', 0)',
+          'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', 0.6)',
+          'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', 0.8)',
           'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', 1)'
       ]
     });
+
+    _se.heatmaps[color] = heatmap;
 
     heatmap.setMap(_se.map);
   });
