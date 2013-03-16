@@ -150,3 +150,41 @@ body {
   position: relative;
   float: left;
 }
+
+#colorChanger {
+  width: 768px;
+  padding-bottom: -2px;
+}
+
+.color_from_changer {
+  margin-bottom: -2px;
+}
+
+
+#hideColorChanger {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  float: right;
+  margin-top: 30px;
+  margin-right: 20px;
+  background-image: url(/img/arrow_up.png);
+}
+
+#showColorChanger {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 0px;
+  margin-top: 7px;
+  margin-right: 20px;
+  background-image: url(/img/arrow_down.png);
+}
+
+#fieldColorChanger {
+  left: 0px;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+}
