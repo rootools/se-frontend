@@ -29,5 +29,8 @@ if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(CurrentPlace);
 }
 
-var token = window.location.hash.split('=')[1];
-Users.check(token);
+var hash = window.location.hash.split('=');
+
+if ($.cookie('auth') || (hash && hash[0] == '#access_token')) {
+  Users.check(hash[1]);
+}
