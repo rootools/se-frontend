@@ -119,7 +119,7 @@ Users = {
 
     not_updated: function(data) {
       console.log('updated');
-    }
+    },
 
     exists: function(data) {
       console.log('exist');
