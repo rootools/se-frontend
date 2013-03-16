@@ -30,6 +30,6 @@ function DrawColorPicker() {
 
   $('.color_from_picker').bind('click', function() {
     var color = RGBtoHEX($(this).css('background-color'));
-    console.log(color);
+    Users.create({color: color});
   });
 }

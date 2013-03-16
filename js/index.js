@@ -32,5 +32,6 @@ if(navigator.geolocation) {
 var hash = window.location.hash.split('=');
 
 if ($.cookie('auth') || (hash && hash[0] == '#access_token')) {
-  Users.check(hash[1]);
+  Users._access_token = hash[1];
+  Users.check();
 }

@@ -1,9 +1,9 @@
 
 Request = {
 
-  get: function(data, callback) {
+  get: function(url, data, callback) {
 
-    var url = this._url;
+    var url = this._url + url;
 
     $.ajax({
       url: url,
@@ -43,22 +43,28 @@ Request = {
     });
   },
 
-  _url: "https://192.168.30.155:8091/push"
+  _url: "https://192.168.30.155:8091/"
 
 }
 
 Users = {
 
-  check: function(token) {
+  _access_token: null,
+  _uid: null,
+  _url: "/users",
+
+  check: function(access_token) {
 
     var _this = this;
+    var access_token = access_token ? access_token : this._access_token;
 
     Request.get(
-      {token: token},
+      _this._url,
+      {access_token: access_token},
       function(data, status) {
 
         if (data && _this._response[data.status]) {
-          data.token = token;
+          data.access_token = access_token;
           _this._response[data.status](data);
         } else {
           _this._response.not_found(data.data);
@@ -73,7 +79,10 @@ Users = {
 
     var _this = this;
 
+    data.access_token = data.access_token ? data.access_token : this._access_token;
+
     Request.post(
+      _this._url,
       data,
       function(data) {
         if (data && _this._response[data.status]) {
@@ -90,7 +99,16 @@ Users = {
 
     var _this = this;
 
+    if (this._access_token) {
+      data.access_token = data.access_token ? data.access_token : this._access_token;
+    }
+    var uid = data.uid ? data.uid : this._uid;
+    delete(data.uid);
+
+    var url = this._url + "/" + uid;
+
     Request.put(
+      url,
       data,
       function(data) {
         if (data && _this._response[data.status]) {
@@ -106,14 +124,12 @@ Users = {
   _response: {
 
     not_found: function(data) {
-      //DrawColorPicker();
       console.log('not_exist');
       DrawColorPicker();
       $('#login_button').remove();
     },
 
     not_created: function(data) {
-      //DrawColorPicker();
       console.log('not_created');
     },
 
@@ -128,6 +144,7 @@ Users = {
 
     created: function(data) {
       console.log('created');
+      DropColorPicker();
     },
 
     updated: function(data) {
