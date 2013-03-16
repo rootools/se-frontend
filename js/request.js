@@ -8,10 +8,9 @@ Request = {
     $.ajax({
       url: url,
       type: 'GET',
-      crossDomain: true,
       data: data,
-      dataType: 'jsonp',
-      complete: callback
+      dataType: 'json',
+      success: callback
     });
   },
 
@@ -22,9 +21,8 @@ Request = {
     $.ajax({
       url: url,
       type: 'POST',
-      crossDomain: true,
       data: data,
-      dataType: 'jsonp',
+      dataType: 'json',
       success: callback
     });
   },
@@ -36,14 +34,13 @@ Request = {
     $.ajax({
       url: url,
       type: 'PUT',
-      crossDomain: true,
       data: data,
-      dataType: 'jsonp',
+      dataType: 'json',
       success: callback
     });
   },
 
-  _url: "http://localhost:8090"
+  _url: "http://localhost"
 
 }
 
@@ -62,7 +59,7 @@ Users = {
       _this._url,
       {access_token: access_token},
       function(data, status) {
-
+        console.log(data);
         if (data && _this._response[data.status]) {
           data.access_token = access_token;
           _this._response[data.status](data);
@@ -137,7 +134,7 @@ Users = {
       console.log('updated');
     },
 
-    exists: function(data) {
+    found: function(data) {
       console.log('exist');
       $('#login_button').remove();
     },
