@@ -10,40 +10,40 @@ Request = {
       type: 'GET',
       crossDomain: true,
       data: data,
-      dataType: 'json',
+      dataType: 'jsonp',
       complete: callback
     });
   },
 
-  post: function(data, callback) {
+  post: function(url, data, callback) {
 
-    var url = this._url;
+    var url = this._url + url;
 
     $.ajax({
       url: url,
       type: 'POST',
       crossDomain: true,
       data: data,
-      dataType: 'json',
+      dataType: 'jsonp',
       success: callback
     });
   },
 
-  put: function(data, callback) {
+  put: function(url, data, callback) {
 
-    var url = this._url;
+    var url = this._url + url;
 
     $.ajax({
       url: url,
       type: 'PUT',
       crossDomain: true,
       data: data,
-      dataType: 'json',
+      dataType: 'jsonp',
       success: callback
     });
   },
 
-  _url: "https://192.168.30.155:8091/"
+  _url: "https://192.168.30.155:8091"
 
 }
 
