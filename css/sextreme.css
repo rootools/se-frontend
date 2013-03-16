@@ -2,6 +2,10 @@ body {
   padding-top: 40px;
 }
 
+#content {
+  z-index: 1;
+}
+
 #login_button {
   width: 300px;
   height: 44px;
@@ -17,10 +21,11 @@ body {
   
   border: 1px solid #c0c0c0;
   border-radius: 7px;
+  z-index: 1;
 }
 
 #mapcanvas {
-  z-index: -10;
+  z-index: 0;
 }
 
 #colorPicker {
@@ -31,6 +36,7 @@ body {
   left: 50%;
   margin-left: -128px;
   margin-top: -128px;
+  z-index: 1;
 }
 
 #colorPickerTitle {

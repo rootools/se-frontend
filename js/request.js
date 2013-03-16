@@ -136,17 +136,51 @@ Users = {
 
     found: function(data) {
       console.log('exist');
+
+      Users._uid = data.uid;
+      Teams._color = data.color;
+
       $('#login_button').remove();
+
+      _se.map.scrollwheel = true;
+      _se.map.draggable = true;
+      _se.map.disableDoubleClickZoom = false;
+
+      Teams.points();
     },
 
     created: function(data) {
       console.log('created');
       DropColorPicker();
+      _se.map.scrollwheel = true;
+      _se.map.draggable = true;
+      _se.map.disableDoubleClickZoom = false;
     },
 
     updated: function(data) {
       console.log('updated');
     }
+
+  }
+
+}
+
+Teams = {
+
+  _color: null,
+  _url: "/map",
+
+  points: function() {
+
+    var _this = this;
+
+    Request.get(
+      _this._url,
+      {},
+      function (data, status) {
+        DrawHeatMap(data);
+      }
+    );
 
   }
 

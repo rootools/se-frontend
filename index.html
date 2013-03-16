@@ -11,6 +11,8 @@
   <script src="js/sessions.js"></script>
   <script src="js/interface.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true">
+</script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 <body id="map">
@@ -23,6 +25,8 @@
     </div>
   </div>
 
+  <div id="mapcanvas"></div>
+
   <div class="container" id="content">
     <div id="login_button">
       <a href="https://foursquare.com/oauth2/authenticate?client_id=UEWXYEZP5U4IHNBGOJAR4T0BAQALE5BIWFKHCGI1VQBFFUVR&response_type=token&redirect_uri=http://localhost/se">
@@ -30,6 +34,7 @@
       </a>
     </div>
   </div>
+
 <script src="js/index.js"></script>
 </body>
 </html>

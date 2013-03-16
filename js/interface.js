@@ -10,26 +10,29 @@ function RGBtoHEX(rgb) {
 }
 
 function DrawColorPicker() {
-  var html = '';
-  html += '<div id="colorPicker">';
-  html += ' <div id="colorPickerTitle">Choose your color</div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_1"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_2"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_3"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_4"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_5"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_6"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_7"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_8"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_9"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_10"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_11"></div>';
-  html += ' <div class="color_from_picker" id="color_picker_color_12"></div>';
-  html += '</div>';
+  var html = '<div id="colorPicker">' +
+      '<div id="colorPickerTitle">Choose your color</div>' +
+      '<div class="color_from_picker" id="color_picker_color_1"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_2"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_3"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_4"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_5"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_6"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_7"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_8"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_9"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_10"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_11"></div>' +
+      '<div class="color_from_picker" id="color_picker_color_12"></div>' +
+    '</div>';
   $('#content').html(html);
 
   $('.color_from_picker').bind('click', function() {
     var color = RGBtoHEX($(this).css('background-color'));
     Users.create({color: color});
   });
+}
+
+function DropColorPicker() {
+  $('#colorPicker').remove();
 }
