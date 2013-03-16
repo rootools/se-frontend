@@ -23,7 +23,7 @@ var CurrentPlace = function(position) {
   map = document.getElementById('map');
   map.appendChild(_se.mapcanvas);
 
-  latlng = new google.maps.LatLng(41.72809214560253, -74.99112284183502);//position.coords.latitude, position.coords.longitude);
+  latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   myOptions = {
     zoom: 15,
     center: latlng,
@@ -63,16 +63,13 @@ function hexToRgb(hex) {
 
 var DrawHeatMap = function(data) {
 
-  var heatmapDataAr = {};
-  $.each(data, function(i, heat) {
-    if (!heatmapDataAr[heat.color]) {
-      heatmapDataAr[heat.color] = [];
-    }
-    
-    heatmapDataAr[heat.color].push({location: new google.maps.LatLng(heat.lat, heat.lng), weight: heat.weight});
-  });
+  $.each(data, function(color, points) {
 
-  $.each(heatmapDataAr, function(color, heatmapData) {
+    var heatmapData = [];
+
+    $.each(points, function(i, point) {
+      heatmapData.push({location: new google.maps.LatLng(point.lat, point.lng), weight: point.weight});
+    });
 
     rgb = hexToRgb(color);
 
