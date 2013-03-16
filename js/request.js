@@ -43,7 +43,7 @@ Request = {
     });
   },
 
-  _url: "https://192.168.30.155:8091"
+  _url: "http://localhost:8090"
 
 }
 
