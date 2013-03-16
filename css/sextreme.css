@@ -2,7 +2,7 @@ body {
   padding-top: 40px;
 }
 
-.login {
+#login_button {
   width: 300px;
   height: 44px;
   position: absolute;
@@ -23,7 +23,98 @@ body {
   z-index: -10;
 }
 
+#colorPicker {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  top: 50%;
+  left: 50%;
+  margin-left: -128px;
+  margin-top: -128px;
+}
+
+#colorPickerTitle {
+  font-size: 25px;
+  height: 44px;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px 10px 2px 2px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  padding-top: 20px;
+}
+
+.color_from_picker {
+  position: relative;
+  float: left;
+  width: 64px;
+  height: 64px;
+}
+
 body {
   height: 100%;
+  font-family: Comic Sans,Comic Sans MS,cursive;
   /*background-image: url(http://www.tom-carden.co.uk/wp-content/uploads/2008/10/osm-yahoo-flash.png);*/
+}
+
+/* Красный */
+#color_picker_color_1 {
+  background-color: #FF0000;
+}
+
+/* Оранжевый */
+#color_picker_color_2 {
+  background-color: #FF8000;
+}
+
+/* Желтый */
+#color_picker_color_3 {
+  background-color: #FFFF00;
+}
+
+/* Зеленый */
+#color_picker_color_4 {
+  background-color: #00FF00;
+}
+
+/* Синий */
+#color_picker_color_5 {
+  background-color: #0000FF;
+}
+
+/* Фиолетовый */
+#color_picker_color_6 {
+  background-color: #FF00FF;
+}
+
+
+/* Циан */
+#color_picker_color_7 {
+  background-color: #00FFFF;
+}
+
+/* Каштановый */
+#color_picker_color_8 {
+  background-color: #A52A2A;
+}
+
+/* Болотный */
+#color_picker_color_9 {
+  background-color: #809040;
+}
+
+/* Шоколадный */
+#color_picker_color_10 {
+  background-color: #543112;
+}
+
+/* Хаки */
+#color_picker_color_11 {
+  background-color: #C3B091;
+}
+
+/* Серебристый */
+#color_picker_color_12 {
+  background-color: #7100C4;
 }
