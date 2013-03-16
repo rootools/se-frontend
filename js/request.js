@@ -108,6 +108,8 @@ Users = {
     not_found: function(data) {
       //DrawColorPicker();
       console.log('not_exist');
+      DrawColorPicker();
+      $('#login_button').remove();
     },
 
     not_created: function(data) {
@@ -121,6 +123,7 @@ Users = {
 
     exists: function(data) {
       console.log('exist');
+      $('#login_button').remove();
     },
 
     created: function(data) {

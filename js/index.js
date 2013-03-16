@@ -29,12 +29,5 @@ if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(CurrentPlace);
 }
 
-$.cookie('new_user', true);
-
-if($.cookie('auth')) {
-  $('#login_button').remove();
-}
-
-if($.cookie('new_user')) {
-  DrawColorPicker();
-}
+var token = window.location.hash.split('=')[1];
+Users.check(token);
